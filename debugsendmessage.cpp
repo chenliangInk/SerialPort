@@ -74,9 +74,9 @@ QVector<unsigned char> DebugSendMessage::crcDetect(const QByteArray& bytesReceiv
 QByteArray DebugSendMessage::simulateData(const QByteArray& bytesReceive) {
     unsigned char controlAddress = bytesReceive[0];  // 获取控制器地址
     unsigned char functionCode = 0x04;  // 功能码
-    unsigned int registerStartAddress = (unsigned char)(bytesReceive[2]) * 256
+    unsigned int registerStartAddress = ((unsigned char)(bytesReceive[2]) << 8)
             + (unsigned char)(bytesReceive[3]);  // 寄存器开始地址
-    unsigned int registerNumbers = (unsigned char)(bytesReceive[4]) * 256
+    unsigned int registerNumbers = ((unsigned char)(bytesReceive[4]) << 8)
             + (unsigned char)(bytesReceive[5]);  // 寄存器数量
 
     QByteArray byteChannelData = channelDataBytes(
