@@ -1,4 +1,4 @@
 # SerialPort
 
-## 需要环境
+## require
 qt 5.15.0 + msvc2019 32bit
